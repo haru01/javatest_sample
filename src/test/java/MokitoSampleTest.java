@@ -11,41 +11,41 @@ import java.util.List;
 @SuppressWarnings("unchecked")
 public class MokitoSampleTest {
 
-	@Test
-	public void Lets_verify_some_behavior() {
-		List mockedList = mock(List.class);
+    @Test
+    public void Lets_verify_some_behavior() {
+        List mockedList = mock(List.class);
 
-		// sut
-		mockedList.add("one");
-		mockedList.clear();
+        // sut
+        mockedList.add("one");
+        mockedList.clear();
 
-		// expected
-		verify(mockedList).add("one");
-		verify(mockedList).clear();
-	}
+        // expected
+        verify(mockedList).add("one");
+        verify(mockedList).clear();
+    }
 
-	@Test
-	public void Sutbbing() {
-		LinkedList<String> stubedList = mock(LinkedList.class);
+    @Test
+    public void Sutbbing() {
+        LinkedList<String> stubedList = mock(LinkedList.class);
 
-		when(stubedList.get(0)).thenReturn("first");
-		
-		assertThat(stubedList.get(0), equalTo("first"));
-	}
+        when(stubedList.get(0)).thenReturn("first");
 
-	@Test
-	public void SutbbingNotStubId999() {
-		LinkedList<String> stubedList = mock(LinkedList.class);		
-		assertThat(stubedList.get(999), is(nullValue()));
-	}
+        assertThat(stubedList.get(0), equalTo("first"));
+    }
 
-	@Test(expected=RuntimeException.class)
-	public void SutbbingThrowException() {
-		LinkedList<String> stubedList = mock(LinkedList.class);
-		
-		when(stubedList.get(1)).thenThrow(new RuntimeException());
-		
-		stubedList.get(1);
-	}
+    @Test
+    public void SutbbingNotStubId999() {
+        LinkedList<String> stubedList = mock(LinkedList.class);
+        assertThat(stubedList.get(999), is(nullValue()));
+    }
+
+    @Test(expected=RuntimeException.class)
+    public void SutbbingThrowException() {
+        LinkedList<String> stubedList = mock(LinkedList.class);
+
+        when(stubedList.get(1)).thenThrow(new RuntimeException());
+
+        stubedList.get(1);
+    }
 
 }
