@@ -4,15 +4,11 @@ import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
 
-public class WikipediaTest {
+public class HatenaSearchTest {
 
     @Before
     public void prepare() {
         setBaseUrl("http://www.hatena.ne.jp/");
-    }
-    @After
-    public void after() {
-        setScriptingEnabled(false);
     }
 
     @Test
