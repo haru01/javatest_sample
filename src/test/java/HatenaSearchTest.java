@@ -1,6 +1,5 @@
 import static net.sourceforge.jwebunit.junit.JWebUnit.*;
 
-import org.junit.After;
 import org.junit.Test;
 import org.junit.Before;
 
