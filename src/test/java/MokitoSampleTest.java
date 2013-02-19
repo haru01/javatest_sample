@@ -1,11 +1,11 @@
+import java.util.LinkedList;
+import java.util.List;
+
+import org.junit.Test;
 import static org.junit.Assert.assertThat;
 import static org.hamcrest.CoreMatchers.*;
 import static org.mockito.Mockito.*;
 
-import org.junit.Test;
-
-import java.util.LinkedList;
-import java.util.List;
 
 // http://docs.mockito.googlecode.com/hg/latest/org/mockito/Mockito.html
 @SuppressWarnings("unchecked")
@@ -47,5 +47,4 @@ public class MokitoSampleTest {
 
         stubedList.get(1);
     }
-
 }
