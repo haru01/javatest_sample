@@ -4,10 +4,10 @@ configurations{
   emma
 }
 
-dependencies{
-  emma "emma:emma:2.1.5320"
-    emma "emma:emma_ant:2.1.5320"
+dependencies {
+  emma  fileTree(dir: 'tool/emma/', include: '*.jar')
 }
+
 
 def emmaConvention = new EmmaPluginConvention(project)
 project.convention.plugins.emma = emmaConvention
