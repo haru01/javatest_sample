@@ -1,18 +1,19 @@
-apply plugin: 'java'
-apply plugin: 'war'
-apply plugin: 'eclipse'
-apply plugin: 'checkstyle'
-apply from:"file:emma.gradle"
+apply {
+  plugin  'java'
+  plugin  'war'
+  plugin  'eclipse'
+  plugin  'checkstyle'
+  from    'file:emma.gradle'
+}
 
 dependencies {
-  compile fileTree( dir: "lib/compile", include: '*.jar' )
-  testCompile fileTree( dir: 'lib/compileTest', include: '*.jar')
+  compile fileTree( dir: 'lib/compile/', include: '*.jar' )
+  testCompile fileTree( dir: 'lib/compileTest/', include: '*.jar')
 }
 
 dependencies {
   checkstyle fileTree(dir: 'tool/checkstyle/', include: '*.jar')
 }
-
 
 tasks.withType(Compile) {
   options.encoding = 'UTF-8'
