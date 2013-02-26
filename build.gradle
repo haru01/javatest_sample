@@ -4,7 +4,7 @@ apply {
   plugin  'jetty'
   plugin  'eclipse'
   plugin  'checkstyle'
-  from    'file:gradle/emma.gradle'
+  from 'gradle/emma.gradle'
 }
 
 if (!hasProperty('env')) {
