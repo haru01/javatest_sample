@@ -7,7 +7,7 @@ public class GradleHelloUITest {
 
     @Before
     public void prepare() {
-        setBaseUrl("http://localhost:9000/javatest_sample/");
+        setBaseUrl("http://localhost:9000/test/");
     }
 
     @Test

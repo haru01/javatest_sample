@@ -46,10 +46,12 @@ tasks.withType(Compile) {
 port = 9000
 jettyRun {
   httpPort = port
+  contextPath = '/test'
 }
 
 jettyRunWar {
   httpPort = port
+  contextPath = '/test'
 }
 
 test {
