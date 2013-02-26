@@ -1,0 +1,4 @@
+db {
+  username     = "dev.username"
+  password     = "dev.password"
+}

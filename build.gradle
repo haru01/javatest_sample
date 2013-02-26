@@ -4,16 +4,39 @@ apply {
   plugin  'jetty'
   plugin  'eclipse'
   plugin  'checkstyle'
-  from    'file:emma.gradle'
+  from    'file:gradle/emma.gradle'
 }
 
+if (!hasProperty('env')) {
+  env = 'default'
+}
+
+envConfig = { ->
+  def slurper = new ConfigSlurper()
+  def files = files("gradle/default.config.gradle",
+                    "gradle/${env}.config.gradle")
+  return files.inject(new ConfigObject()) { config, file ->
+      file.exists() ? config.merge(slurper.parse(file.toURL())) : config
+  }
+}();
+
 dependencies {
+  runtime fileTree( dir: 'lib/runtime/', include: '*.jar' )
   compile fileTree( dir: 'lib/compile/', include: '*.jar' )
   testCompile fileTree( dir: 'lib/compileTest/', include: '*.jar')
 }
 
 dependencies {
   checkstyle fileTree(dir: 'tool/checkstyle/', include: '*.jar')
+}
+
+processResources {
+  include '**/*.properties'
+  expand envConfig
+}
+
+build << {
+  printApplicationProperties()
 }
 
 tasks.withType(Compile) {
@@ -27,4 +50,10 @@ jettyRun {
 
 jettyRunWar {
   httpPort = port
+}
+
+def printApplicationProperties() {
+  println "-- application.properties --"
+  println file("build/resources/main/application.properties").text
+  println "---------------"
 }
