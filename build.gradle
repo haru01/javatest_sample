@@ -52,6 +52,21 @@ jettyRunWar {
   httpPort = port
 }
 
+test {
+  exclude '**/*UITest.class'
+}
+
+task(extraConfig) {
+  println 'setting jetty to daemon'
+  jettyRunWar.daemon = true
+}
+
+task('webTest', type: Test, dependsOn: [clean, build, extraConfig, jettyRunWar]) {
+  testReportDir = file("${reportsDir}/webTests")
+  include("**/*UITest.class")
+}
+
+
 def printApplicationProperties() {
   println "-- application.properties --"
   println file("build/resources/main/application.properties").text

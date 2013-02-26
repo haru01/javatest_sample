@@ -3,7 +3,7 @@ import static net.sourceforge.jwebunit.junit.JWebUnit.*;
 import org.junit.Test;
 import org.junit.Before;
 
-public class HatenaSearchTest {
+public class HatenaSearchUITest {
 
     @Before
     public void prepare() {
